@@ -12,6 +12,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/adminlte/adminlte.min.css">
+    @stack('style')
 </head>
 <body class="hold-transition login-page">
 
@@ -24,5 +25,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/assets/js/adminlte/adminlte.min.js"></script>
+    @stack('script')
 </body>
 </html>
