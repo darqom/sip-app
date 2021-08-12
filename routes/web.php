@@ -21,4 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::prefix('/student')->group(function() {
+    require __DIR__.'/student.php';
+});
+
 require __DIR__.'/auth.php';
