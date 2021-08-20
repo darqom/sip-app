@@ -29,6 +29,11 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'add-user']);
         Permission::create(['name' => 'edit-user']);
         Permission::create(['name' => 'delete-user']);
+        // Role management
+        Permission::create(['name' => 'read-role']);
+        Permission::create(['name' => 'add-role']);
+        Permission::create(['name' => 'edit-role']);
+        Permission::create(['name' => 'delete-role']);
     }
 
     private function createAdminRole()
@@ -37,7 +42,8 @@ class PermissionSeeder extends Seeder
         $user = User::where('email', 'admin@gmail.com')->first();
 
         $role->syncPermissions([
-            'read-user', 'add-user', 'edit-user', 'delete-user'
+            'read-user', 'add-user', 'edit-user', 'delete-user',
+            'read-role', 'add-role', 'edit-role', 'delete-role'
         ]);
         $user->assignRole($role);
     }

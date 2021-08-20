@@ -31,6 +31,22 @@ $route = \Request::route()->getName();
                     </ul>
                 </li>
             @endcan
+            @can('read-role')
+                <li class="nav-item dropdown @if (in_array($route,
+                    ['admin.role.index', 'admin.role.create' , 'admin.role.edit' ])) active @endif">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-cogs"></i><span>Role</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="@if ($route=='admin.role.index' ) active @endif">
+                            <a href="{{ route('admin.role.index') }}">Daftar</a>
+                        </li>
+                        @can('add-role')
+                            <li class="@if ($route=='admin.role.create' ) active @endif">
+                                <a href="{{ route('admin.role.create') }}">Tambah</a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
         </ul>
     </aside>
 </div>

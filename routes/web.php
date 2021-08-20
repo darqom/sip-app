@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,12 @@ Route::get('/', function () {
 
 Route::middleware('auth')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // User Routes
     Route::get('/user/datatables', [UserController::class, 'datatables'])->name('user.datatables');
     Route::resource('/user', UserController::class)->except('show');
+    // Role Routes
+    Route::get('/user/datatables', [RoleController::class, 'datatables'])->name('role.datatables');
+    Route::resource('/role', RoleController::class)->except('show');
 });
 
 Route::prefix('/student')->group(function () {
