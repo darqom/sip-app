@@ -26,7 +26,7 @@ Route::middleware('auth')->name('admin.')->group(function () {
     Route::get('/user/datatables', [UserController::class, 'datatables'])->name('user.datatables');
     Route::resource('/user', UserController::class)->except('show');
     // Role Routes
-    Route::get('/user/datatables', [RoleController::class, 'datatables'])->name('role.datatables');
+    Route::get('/role/datatables', [RoleController::class, 'datatables'])->name('role.datatables');
     Route::resource('/role', RoleController::class)->except('show');
 });
 
