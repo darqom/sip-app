@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +19,14 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::middleware('auth')->group(function() {
-    Route::get('/dashboard', [DashboardController::class , 'index'])->name('admin.dashboard');
+Route::middleware('auth')->name('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/user/datatables', [UserController::class, 'datatables'])->name('user.datatables');
+    Route::resource('/user', UserController::class)->except('show');
 });
 
-Route::prefix('/student')->group(function() {
-    require __DIR__.'/student.php';
+Route::prefix('/student')->group(function () {
+    require __DIR__ . '/student.php';
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
