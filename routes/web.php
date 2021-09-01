@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,9 @@ Route::middleware('auth')->name('admin.')->group(function () {
     // Role Routes
     Route::get('/role/datatables', [RoleController::class, 'datatables'])->name('role.datatables');
     Route::resource('/role', RoleController::class)->except('show');
+    // Student Routes
+    Route::get('/students', [StudentController::class, 'datatables'])->name('students.datatables');
+    Route::resource('/students', StudentController::class);
 });
 
 Route::prefix('/student')->group(function () {
